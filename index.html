@@ -1,15 +1,120 @@
 <!DOCTYPE html>
 <html>
 <head>
-  <title>Redirecting...</title>
-  <script>
-    window.onload = function() {
-      window.location.href = "https://script.google.com/macros/s/AKfycbxK-6o4n3EgIqA9n9sq9v3fN4kgkM3NanbhzB4Br45TV49GxbBV8VIOa9MV-ornu5dJ/exec";
-    }
-  </script>
+  <base target="_top">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+  <link rel="stylesheet" href="css/styles.css">
 </head>
+
 <body>
-  <p>Redirecting to application...</p>
+    <header>  
+    <section class="search-section">
+        <img src="img/logo.jpeg" alt="Logo" id="logoHome" width="50" height="50">   
+        <h1 id="title">ARC Social</h1>
+    </section>
+    <div class="language-selector">
+      <button id="langEN" class="lang-btn selected" onclick="setLanguage('en')">English</button>
+      <button id="langMR" class="lang-btn" onclick="setLanguage('mr')">मराठी</button>
+    </div>
+    </header>
+
+    <div id="homePage">    
+      <section class="search-section">
+          <input type="text" id="searchBox" placeholder="Search books...">
+          <button id="searchButton" class="action-btn">Search</button>
+      </section>
+
+      <section class="search-section">
+          <button id="browseButton" class="action-btn">Browse my collection</button>
+      </section>
+      
+      <section class="new-books">
+          <h2 id="newBooksTitle">Newly Added Books</h2>
+          <div class="scroll-container">
+              <ul id="newBooksList">
+              </ul>
+          </div>
+      </section>
+      
+      <section class="upcoming-activities">
+          <h2 id="activitiesTitle">Upcoming Activities</h2>
+          <div class="scroll-container">
+              <ul id="activitiesList">
+              </ul>
+          </div>    
+      </section>
+    </div>
+
+  <div id="searchContainer" class="container">
+    <div class="filters">
+      <div class="filter-row">
+        <div class="filter-item">
+          <input type="text" id="authorSearch" placeholder="">
+          <button id="searchTextBtn" class="action-btn">Search</button>
+        </div>
+      </div>
+    </div>
+
+    <div class="filters">
+      <div class="filter-row">
+        <div class="filter-item">
+          <label for="genreSelect" id="label-genre">Genre</label>
+          <select id="genreSelect"></select>
+        </div>
+        <div class="filter-item">
+          <label for="ageGroupSelect" id="label-ageGroup">Age Group</label>
+          <select id="ageGroupSelect"></select>
+        </div>  
+      </div>
+      
+      <div class="filter-row">
+        <div class="filter-item">
+          <label for="author" id="label-author">Author</label>
+          <select id="authorSelect"></select>
+        </div>  
+      </div>
+      
+      <div class="button-container">
+        <button id="searchBtn" class="action-btn">Search</button>
+        <button id="clearBtn" class="action-btn">Clear</button>
+      </div>
+    </div>
+
+    <div id="processingMsg" class="processing-message" style="display: none;">
+      Processing...
+    </div>
+
+    <div class="results-container">
+      <div id="bookList" class="book-list"></div>
+      <div id="alphabetNav" class="alphabet-nav"></div>
+    </div>  
+  </div>
+
+  <div id="bookdetails" class="container" style="display: none;">
+      <h2 id="bookTitle"></h2>
+      <p id="bookAuthor">Author</p>
+      <p id="bookGenre">Genre</p>
+      <p id="bookAge">Age</p>
+      <p id="bookNumber">Number</p> 
+      <div class="search-section">
+        <img id="bookCover" style="display: none;">
+      </div>
+      <p id="bookSynopsis"></p>
+      <div class="search-section">
+        <button id="bookdetail-back" class="action-btn">Back</button>
+      </div>
+  </div>
+  
+  <footer>
+      <p id="timing">⏰ Library Timings: Mon-Sat 10am-1pm & 5pm-8pm</p>    
+      <p id="address"></p>
+      <p id="mail">✉️ <a href="mailto:arcsoocial@gmail.com" style='color: #2e7d32;'>arcsoocial@gmail.com</p>      
+      <p id="contact"></p>
+      <p id="instragram">📷 <a href="https://www.instagram.com/arcsoocial" target="_blank">Instagram</p>
+  </footer>
+
+  <!-- Load the API Client -->
+  <script src="js/library-api-client.js"></script>
+
 </body>
 </html>
-
