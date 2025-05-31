@@ -463,6 +463,7 @@ async function showBookDetails(event) {
 
   // make the right screen visible
   document.getElementById('searchContainer').style.display = 'none';
+  document.getElementById('homePage').style.display = 'none';    
   //document.getElementById('lang-select').style.display = 'none';
   
   document.getElementById('bookdetails').style.display = 'block';
@@ -572,7 +573,12 @@ async function getBookInfo(title, author) {
 
 function backfromdetails() {
   hideBookDetails();
-  document.getElementById('searchContainer').style.display = 'block';
+
+  if (currentPage === 'home' ) {
+    document.getElementById('searchContainer').style.display = 'block';
+  } else {
+    document.getElementById('homePage').style.display = 'block';   
+  }
   //document.getElementById('lang-select').style.display = 'block';
 }
 
@@ -701,6 +707,7 @@ document.getElementById('logoHome').onclick = homePage;
 document.getElementById('title').onclick = homePage;
 document.getElementById('bookdetail-back').onclick = backfromdetails;
 document.getElementById("bookList").onclick = showBookDetails;  
+document.getElementById("newBooksList").onclick = showBookDetails;
 
 //window.onload = initialize;
 
