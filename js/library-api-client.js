@@ -574,7 +574,7 @@ async function getBookInfo(title, author) {
 function backfromdetails() {
   hideBookDetails();
 
-  if (currentPage === 'home' ) {
+  if (currentPage === 'search' ) {
     document.getElementById('searchContainer').style.display = 'block';
   } else {
     document.getElementById('homePage').style.display = 'block';   
