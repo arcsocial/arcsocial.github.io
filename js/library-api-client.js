@@ -463,7 +463,7 @@ async function showBookDetails(event) {
 
   // make the right screen visible
   document.getElementById('searchContainer').style.display = 'none';
-  document.getElementById('lang-select').style.display = 'none';
+  //document.getElementById('lang-select').style.display = 'none';
   
   document.getElementById('bookdetails').style.display = 'block';
 
@@ -573,7 +573,7 @@ async function getBookInfo(title, author) {
 function backfromdetails() {
   hideBookDetails();
   document.getElementById('searchContainer').style.display = 'block';
-  document.getElementById('lang-select').style.display = 'block';
+  //document.getElementById('lang-select').style.display = 'block';
 }
 
 // home page display of new books
@@ -626,7 +626,7 @@ function browseBooks() {
 
 function homePage() {
   currentPage = 'home';  
-  document.getElementById('lang-select').style.display = 'block';
+  //document.getElementById('lang-select').style.display = 'block';
   hideSearch();
   hideBookDetails();
 }
