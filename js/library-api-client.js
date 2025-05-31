@@ -47,8 +47,9 @@ class LibraryAPIClient {
       if (result.status === 'error') {
         throw new Error(`API returned error: ${result.message}`);
       }
-
+      
       return result.data;
+      
     } catch (error) {
       console.error(`Error in ${action} request:`, error);
       throw error;
@@ -462,6 +463,8 @@ async function showBookDetails(event) {
 
   // make the right screen visible
   document.getElementById('searchContainer').style.display = 'none';
+  document.getElementById('language-selector').style.display = 'none';
+  
   document.getElementById('bookdetails').style.display = 'block';
 
   // diplay data
@@ -570,9 +573,10 @@ async function getBookInfo(title, author) {
 function backfromdetails() {
   hideBookDetails();
   document.getElementById('searchContainer').style.display = 'block';
+  document.getElementById('language-selector').style.display = 'block';
 }
 
-
+// home page display of new books
 function displayNewBooks(items) {
   const itemList = document.getElementById('newBooksList');
 
@@ -622,6 +626,7 @@ function browseBooks() {
 
 function homePage() {
   currentPage = 'home';  
+  document.getElementById('language-selector').style.display = 'block';
   hideSearch();
   hideBookDetails();
 }
