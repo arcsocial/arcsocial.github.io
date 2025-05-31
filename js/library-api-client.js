@@ -184,17 +184,9 @@ async function getCSVData(filename) {
   }
 }
 
+// loading event data fromm CSV file
 async function showEvents() {
   try {
-
-    /* OLD CODE
-    const sheetname = 'Events';
-    
-    // Fetch events from API
-    const items = await apiClient.getSheetData(sheetname);
-
-    console.error('Done get events');
-    */
 
     const items = await getCSVData('events.csv');
     console.log('Events:', items.length);   
