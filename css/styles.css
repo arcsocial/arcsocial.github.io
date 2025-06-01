@@ -325,7 +325,9 @@ select:focus, input:focus {
     display: flex;
     flex-direction: row;
     align-items: center;
-    justify-content: center;
+    justify-content: space-around;
+    width: 100%;
+    flex-grow: 1;
 }
   
 /* Mobile Optimizations */
