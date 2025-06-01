@@ -18,6 +18,10 @@ class LibraryAPIClient {
   // Make API request with proper error handling
   async makeRequest(action, params = {}) {
     try {
+      // setup security 
+      params.apiKey = "ARCvCZVYHN89ZO6zPLwTedKosWgXXgdcEdKusW";           // API key passed here
+      params.origin = window.location.origin;   // Origin passed here
+      
       // Add language to all requests by default
       params.language = this.language;
       params.action = action;
