@@ -319,7 +319,6 @@ select:focus, input:focus {
     flex-direction: column;
     align-items: center;
     justify-content: center;
-    min-height: 50vh; /* Optional: centers vertically too */
 }
 
 .flex-row {
@@ -327,7 +326,6 @@ select:focus, input:focus {
     flex-direction: row;
     align-items: center;
     justify-content: center;
-    min-height: 50vh; /* Optional: centers vertically too */
 }
   
 /* Mobile Optimizations */
