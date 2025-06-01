@@ -321,6 +321,14 @@ select:focus, input:focus {
     justify-content: center;
     min-height: 50vh; /* Optional: centers vertically too */
 }
+
+.flex-row {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+    min-height: 50vh; /* Optional: centers vertically too */
+}
   
 /* Mobile Optimizations */
 @media (max-width: 768px) {
