@@ -382,17 +382,18 @@ function displayBooks(books) {
  
   // Get unique first letters of author last names
   const uniqueLetters = [...new Set(
-    books.map(book => book.AuthorLastName.charAt(0).toUpperCase())
+    books.map(book => book.LName.charAt(0).toUpperCase())
   )].sort();
 
   // Generate book list HTML
   let currentLetter = '';
   let html = '';
   let count = 0;
+  let bookid = '';  
   bookList.innerHTML = '';
 
   books.forEach(book => {
-    const letterHeader = book.AuthorLastName.charAt(0).toUpperCase();
+    const letterHeader = book.LName.charAt(0).toUpperCase();
     if (letterHeader !== currentLetter) {
       if (currentLetter !== '') {
         html += '</div>'; // Close previous letter-section
@@ -403,7 +404,17 @@ function displayBooks(books) {
       html += `<div id="section${currentLetter}" class="letter-section">
                 <div class="letter-header">${currentLetter}</div>`;
     }
-    html += `<div class="book-item">
+
+    // we are adding the Age & Number to the ID element so that we can later use it in Displaydetails
+    // without needing to retrieve from the backend
+    bookid = book.Age + "-" 
+    if ( book.Number !== '' ) {
+      bookid += book.Number;
+    } else {
+      bookid += "NA";
+    }
+    
+    html += `<div id="${bookid}" class="book-item">
               <strong>${book.Title}</strong> | ${book.Author} | <strong>${book.Genre}</strong>
             </div>`;
     count++;      
@@ -433,30 +444,36 @@ function displayBooks(books) {
 async function showBookDetails(event) {
 
   let bookString = '';
+  let bookid = '';
   
   if (event.target) {
     if (event.target.nodeName === "STRONG" ) {        
       bookString = event.target.parentNode.textContent;
+      bookid = event.target.parentNode.id;
     } else {
       bookString = event.target.textContent;
+      bookid = event.target.id;
     }
   }
 
-  console.log('ShowBookDetails:', bookString);      
+  console.log('ShowBookDetails:', bookString, ' ID ', bookid);      
 
   let title = '';
   let author = '';
+  let genre = ''
   
   const parts = bookString.split("|");
   
-  if (parts.length > 3 ) {
-    title = parts[0].trim() + ' ' + parts[1].trim();
-    author = parts[parts.length - 2].trim();
-  } 
-  if (parts.length === 3) {
+  if (parts.length >= 3) {
     title = parts[0].trim();
     author = parts[1].trim();
+    genre = parts[2].trim();
   } 
+
+  if ( title === '' ) {
+    console.log('ShowBookDetails:', bookString);  
+    return; // we do not have required data to proceed
+  }
 
   // clear old content as a precaution
   document.getElementById('bookAge').textContent = '';
@@ -475,12 +492,18 @@ async function showBookDetails(event) {
   // diplay data
   document.getElementById('bookTitle').textContent = title;
   document.getElementById('bookAuthor').textContent = "Author: " + author;
+  document.getElementById('bookGenre').textContent = "Genre: " + genre;
+
+  // get data from element id
+  const idparts = bookid.split("-");
+  document.getElementById('bookAge').textContent = "Age: " + idparts[0];
+  if ( idparts.length > 1 ) document.getElementById('bookNumber').textContent = "ID Number: " + idparts[1];
 
   // processing message while we get details
   document.getElementById('bdProcessingMsg').style.display = 'block';
   
   // getBookDetails from our spreadsheet
-
+  /*
   try {
         const books = await apiClient.getBookDetails(title, author);
   
@@ -489,13 +512,14 @@ async function showBookDetails(event) {
         if (!books.length) {
             console.log('No book info for:', title, author);
           } else {
-            document.getElementById('bookAge').textContent = "Age: " + books[0].AgeGroup;
+            document.getElementById('bookAge').textContent = "Age: " + books[0].Age;
             document.getElementById('bookGenre').textContent = "Genre: " + books[0].Genre;
             document.getElementById('bookNumber').textContent = "ID Number: " + books[0].Number;
           }
       } catch (error) {
     handleError(error);
   }
+  */
   
   // Get additional book info from Google Book APIs
   console.log('Get additional infor for: ', title, author);
