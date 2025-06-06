@@ -471,7 +471,7 @@ async function showBookDetails(event) {
   } 
 
   if ( title === '' ) {
-    console.log('ShowBookDetails:', bookString);  
+    console.log('ShowBookDetails could not get title:', bookString);  
     return; // we do not have required data to proceed
   }
 
@@ -495,10 +495,12 @@ async function showBookDetails(event) {
   document.getElementById('bookGenre').textContent = "Genre: " + genre;
 
   // get data from element id
-  const idparts = bookid.split("-");
-  document.getElementById('bookAge').textContent = "Age: " + idparts[0];
-  if ( idparts.length > 1 ) document.getElementById('bookNumber').textContent = "ID Number: " + idparts[1];
-
+  if ( bookid ) {
+    const idparts = bookid.split("-");
+    document.getElementById('bookAge').textContent = "Age: " + idparts[0];
+    if ( idparts.length > 1 ) document.getElementById('bookNumber').textContent = "ID Number: " + idparts[1];
+  }
+  
   // processing message while we get details
   document.getElementById('bdProcessingMsg').style.display = 'block';
   
@@ -624,7 +626,7 @@ function displayNewBooks(items) {
 
   items.forEach(book => {
     html += `<li>
-              <strong>${book.Title}</strong> - ${book.Author} - <strong>${book.Genre}</strong>
+              <strong>${book.Title}</strong> | ${book.Author} | <strong>${book.Genre}</strong>
             </li>`;
   });
 
