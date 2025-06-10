@@ -166,12 +166,14 @@ async function showNewBooks() {
 
 // read data from a 'data folder in GIT - will use this to load non-static data on home page
 async function getFileData(filename, seperator) {
+
+  console.log('Getting file data for ', filename, ' and seperator ', seperator);
   try {
     const response = await fetch('data/' + filename);
     const data = await response.text();
     
     const rows = data.split('\n');
-
+    console.log('Filelength  is ', rows.length, ' rows');
     if ( rows.length > 1 ) {
       const headers = rows[0].split(seperator);
       const items = rows.slice(1)
@@ -321,6 +323,7 @@ async function updateFilters() {
     updateSelect('ageGroupSelect', lov.age);
     updateSelect('authorSelect', lov.authors);   
     const genre = getFileData('genre.csv', ',');
+    console.log('Genre from file', genre.length);
     updateSelect('genreSelect', genre);
   } catch (error) {
     console.error('Error populating filters:', error);
