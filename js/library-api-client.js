@@ -469,7 +469,7 @@ function displayBooks(books) {
     html += `<div id="${bookid}" class="book-item">
               <strong>${book.Title}</strong> | ${book.Author} | <strong>${book.Genre}</strong>`;
     
-    if ( isValidNumber(book.Number) ) {
+    if ( isPMGBookNumber(book.Number) ) {
       html+= ` * </div>`;
     } else {
       html+= `</div>`;
@@ -496,8 +496,8 @@ function displayBooks(books) {
   hideProcessing();
 }
 
-function isValidNumber(str) {
-  return /^-?\d+(\.\d+)?$/.test(str.trim());
+function isPMGBookNumber(str) {
+  if ( str != '' ) return /^-?\d+(\.\d+)?$/.test(str[0]);
 }
 
 // show book details based on the book selected by user in the list
