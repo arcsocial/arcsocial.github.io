@@ -151,7 +151,7 @@ async function showNewBooks() {
     const books = await apiClient.getSheetData(sheetname);
     */
 
-    const books = await getCSVData('newbooks.csv');
+    const books = await getCSVData('newbooks.csv', '|');
     
     console.log('Loaded new books:', books.length);   
 
@@ -161,6 +161,37 @@ async function showNewBooks() {
   } catch (error) {
     console.error('Error:', error);
     //document.getElementById('book-list').innerHTML = `<p>Error: ${error.message}</p>`;
+  }
+}
+
+// read data from a 'data folder in GIT - will use this to load non-static data on home page
+async function getFileData(filename, seperator) {
+  try {
+    const response = await fetch('data/' + filename);
+    const data = await response.text();
+    
+    const rows = data.split('\n');
+
+    if ( rows.length > 1 ) {
+      const headers = rows[0].split(seperator);
+      const items = rows.slice(1)
+        .filter(row => row !== '')
+        .map(row => {
+        const values = row.split(seperator);
+          return headers.reduce((obj, header, index) => {
+            obj[header] = values[index];
+            return obj;
+          }, {});
+      });
+      
+      return items; // Now this returns to the caller properly
+    } else {
+      const items = rows[0].split(seperator);
+      return items;
+    }
+  } catch (error) {
+    console.error('Error fetching CSV:', error, ' filename', filename);
+    return []; // Return empty array in case of error
   }
 }
 
@@ -193,7 +224,7 @@ async function getCSVData(filename) {
 async function showEvents() {
   try {
 
-    const items = await getCSVData('events.csv');
+    const items = await getCSVData('events.csv', '|');
     console.log('Events:', items.length);   
 
     // display the data here
@@ -286,9 +317,11 @@ async function updateFilters() {
 
   try {
     const lov = await apiClient.getDistinctValues('All');
-    updateSelect('genreSelect', lov.genre);
+    //updateSelect('genreSelect', lov.genre);
     updateSelect('ageGroupSelect', lov.age);
     updateSelect('authorSelect', lov.authors);   
+    const genre = getFileData('genre.csv', ',');
+    updateSelect('genreSelect, genre);
   } catch (error) {
     console.error('Error populating filters:', error);
   }
