@@ -319,12 +319,12 @@ async function updateFilters() {
 
   try {
     const lov = await apiClient.getDistinctValues('All');
-    //updateSelect('genreSelect', lov.genre);
+    updateSelect('genreSelect', lov.genre);
     updateSelect('ageGroupSelect', lov.age);
     updateSelect('authorSelect', lov.authors);   
-    const genre = await getFileData('genre.csv', ',');
-    console.log('Genre from file', genre.length);
-    updateSelect('genreSelect', genre);
+    //const genre = await getFileData('genre.csv', ',');
+    //console.log('Genre from file', genre.length);
+    //updateSelect('genreSelect', genre);
   } catch (error) {
     console.error('Error populating filters:', error);
   }
