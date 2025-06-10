@@ -325,7 +325,7 @@ async function updateFilters() {
     //const lov = await apiClient.getDistinctValues('All');
     //updateSelect('genreSelect', lov.genre);
     let age = [];
-    if (language == "en") {
+    if (currentLanguage == "en") {
       age = ['Young Children', 'Children', 'Teen', 'Young Adult (16+)', 'Adult'];
     } else {
       age = ['प्रौढ', 'सर्व वयोगट', 'पालकांसाठी'];
@@ -335,7 +335,7 @@ async function updateFilters() {
     const genre = await getFileData('genre.csv', ',');
     //console.log('Genre from file', genre.length);
     updateSelect('genreSelect', genre);
-    const authors = await getFileData('authors'+language+'.csv', ',');
+    const authors = await getFileData('authors'+currentLanguage+'.csv', ',');
     //console.log('Genre from file', genre.length);
     updateSelect('authorSelect', authors);    
   } catch (error) {
