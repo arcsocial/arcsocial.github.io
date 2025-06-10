@@ -335,7 +335,7 @@ async function updateFilters() {
     const genre = await getFileData('genre.csv', ',');
     //console.log('Genre from file', genre.length);
     updateSelect('genreSelect', genre);
-    const authors = await getFileData('authors'+currentLanguage+'.csv', ',');
+    const authors = await getFileData('authors'+currentLanguage);
     //console.log('Genre from file', genre.length);
     updateSelect('authorSelect', authors);    
   } catch (error) {
