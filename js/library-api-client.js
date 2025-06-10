@@ -322,7 +322,7 @@ async function updateFilters() {
     //updateSelect('genreSelect', lov.genre);
     updateSelect('ageGroupSelect', lov.age);
     updateSelect('authorSelect', lov.authors);   
-    const genre = getFileData('genre.csv', ',');
+    const genre = await getFileData('genre.csv', ',');
     console.log('Genre from file', genre.length);
     updateSelect('genreSelect', genre);
   } catch (error) {
