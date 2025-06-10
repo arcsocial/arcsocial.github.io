@@ -332,7 +332,7 @@ async function updateFilters() {
     }    
     updateSelect('ageGroupSelect', age);
     //updateSelect('authorSelect', lov.authors);   
-    const genre = await getFileData('genre.csv', ',');
+    const genre = await getFileData('genre'+currentLanguage);
     //console.log('Genre from file', genre.length);
     updateSelect('genreSelect', genre);
     const authors = await getFileData('authors'+currentLanguage);
@@ -345,6 +345,9 @@ async function updateFilters() {
   hideProcessing();
 }
 
+// search for books 
+// first navigate to the search page
+// get the filtered books from the API and display them
 async function searchBooksText() {
   let searchText = '';
 
