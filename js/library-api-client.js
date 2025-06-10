@@ -321,7 +321,7 @@ async function updateFilters() {
     updateSelect('ageGroupSelect', lov.age);
     updateSelect('authorSelect', lov.authors);   
     const genre = getFileData('genre.csv', ',');
-    updateSelect('genreSelect, genre);
+    updateSelect('genreSelect', genre);
   } catch (error) {
     console.error('Error populating filters:', error);
   }
