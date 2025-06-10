@@ -174,7 +174,7 @@ async function getFileData(filename, seperator) {
     
     const rows = data.split('\n');
     console.log('Filelength  is ', rows.length, ' rows');
-    if ( rows.length > 1 ) {
+    if ( rows.length > 2 ) { // there is an empty line when picked from GIT
       const headers = rows[0].split(seperator);
       const items = rows.slice(1)
         .filter(row => row !== '')
