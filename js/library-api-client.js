@@ -418,7 +418,7 @@ function displayBooks(books) {
               <strong>${book.Title}</strong> | ${book.Author} | <strong>${book.Genre}</strong>`;
     
     if ( isValidNumber(book.Number) ) {
-      html+= `*</div>`;
+      html+= ` * </div>`;
     } else {
       html+= `</div>`;
     }
