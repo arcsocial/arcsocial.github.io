@@ -151,7 +151,7 @@ async function showNewBooks() {
     const books = await apiClient.getSheetData(sheetname);
     */
 
-    const books = await getCSVData('newbooks.csv', '|');
+    const books = await getFileData('newbooks.csv', '|');
     
     console.log('Loaded new books:', books.length);   
 
@@ -226,7 +226,7 @@ async function getCSVData(filename) {
 async function showEvents() {
   try {
 
-    const items = await getCSVData('events.csv', '|');
+    const items = await getFileData('events.csv', '|');
     console.log('Events:', items.length);   
 
     // display the data here
