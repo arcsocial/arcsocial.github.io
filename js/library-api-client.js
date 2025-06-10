@@ -415,11 +415,12 @@ function displayBooks(books) {
     }
     
     html += `<div id="${bookid}" class="book-item">
-              <strong>${book.Title}</strong> | ${book.Author} | <strong>${book.Genre}</strong>';
+              <strong>${book.Title}</strong> | ${book.Author} | <strong>${book.Genre}</strong>`;
+    
     if ( !Number.isNaN(book.Number) ) {
-      html+= '*</div>`;
+      html+= `*</div>`;
     } else {
-      html+= '</div>`;
+      html+= `</div>`;
     }
     count++;      
   });
