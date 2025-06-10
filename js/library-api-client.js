@@ -322,13 +322,22 @@ async function updateFilters() {
   showProcessing();
 
   try {
-    const lov = await apiClient.getDistinctValues('All');
-    updateSelect('genreSelect', lov.genre);
-    updateSelect('ageGroupSelect', lov.age);
-    updateSelect('authorSelect', lov.authors);   
-    //const genre = await getFileData('genre.csv', ',');
+    //const lov = await apiClient.getDistinctValues('All');
+    //updateSelect('genreSelect', lov.genre);
+    let age = [];
+    if (language == "en") {
+      age = ['Young Children', 'Children', 'Teen', 'Young Adult (16+)', 'Adult'];
+    } else {
+      age = ['प्रौढ', 'सर्व वयोगट', 'पालकांसाठी'];
+    }    
+    updateSelect('ageGroupSelect', age);
+    //updateSelect('authorSelect', lov.authors);   
+    const genre = await getFileData('genre.csv', ',');
     //console.log('Genre from file', genre.length);
-    //updateSelect('genreSelect', genre);
+    updateSelect('genreSelect', genre);
+    const authors = await getFileData('authors'+language+'.csv', ',');
+    //console.log('Genre from file', genre.length);
+    updateSelect('authorSelect', authors);    
   } catch (error) {
     console.error('Error populating filters:', error);
   }
