@@ -319,7 +319,7 @@ function updateTranslations(trans) {
 }
 
 async function updateFilters() {
-  showProcessing();
+  //showProcessing();
 
   try {
     //const lov = await apiClient.getDistinctValues('All');
@@ -342,7 +342,7 @@ async function updateFilters() {
     console.error('Error populating filters:', error);
   }
 
-  hideProcessing();
+  //hideProcessing();
 }
 
 // search for books 
@@ -364,6 +364,8 @@ async function searchBooksText() {
   
     showProcessing();
 
+    // for marathi language we expect marathi typing, but just in case 
+    // allows easy typing in minglish for marathi content
     if (currentLanguage === 'mr' && isEnglish(searchText) ) {
       console.log('Calling transliterate for ', searchText);
       searchText = await transliterate(searchText);
@@ -383,6 +385,8 @@ async function searchBooksText() {
   } catch (error) {
     handleError(error);
   }
+
+  hideProcessing();
 }
 
 async function searchBooks() {
@@ -413,6 +417,8 @@ async function searchBooks() {
   } catch (error) {
     handleError(error);
   }
+
+  hideProcessing();
 }
 
 function updateSelect(selectId, values) {
@@ -428,7 +434,6 @@ function displayBooks(books) {
   if (!books.length) {
     bookList.innerHTML = `<div class="no-results">${translations.noResults}</div>`;
     alphabetNav.style.display = 'none';
-    hideProcessing();
     return;
   }
  
@@ -493,7 +498,6 @@ function displayBooks(books) {
     alphabetNav.style.display = 'none';
   }
 
-  hideProcessing();
 }
 
 function isPMGBookNumber(str) {
