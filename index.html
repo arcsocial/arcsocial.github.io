@@ -1,6 +1,7 @@
 <!DOCTYPE html>
 <html>
 <head>
+  <meta charset="UTF-8">
   <base target="_top">
   <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
   <link rel="stylesheet" href="css/styles.css">
@@ -21,8 +22,8 @@
         <h1 id="title">ARC Social</h1>
     </section>
     <div id="lang-select" class="language-selector">
-      <button id="langEN" class="lang-btn selected" onclick="setLanguage('en')">English</button>
-      <button id="langMR" class="lang-btn" onclick="setLanguage('mr')">मराठी</button>
+      <button id="langEN" class="lang-btn selected">English</button>
+      <button id="langMR" class="lang-btn">मराठी </button>
     </div>
     </header>
 
@@ -73,7 +74,7 @@
             <section class="flex-row">
             <p><a href="https://drive.google.com/file/d/1JmF4zD5518sFL5A3cvV85NXUC59fH0f_/preview" target="_blank"> कथा </a></p>
             <p><a href="https://drive.google.com/file/d/1JoEtkPvxhSQZZeBvk01W8oNhTTwvhpjv/preview" target="_blank"> कादंबरी  </a></p>
-            <section>  
+            </section>  
           </section> 
       </section>
     </div>
@@ -151,8 +152,8 @@
       <p id="instragram">📷 <a href="https://www.instagram.com/arcsoocial" target="_blank">Instagram</p>
   </footer>
 
-  <!-- Load the API Client -->
-  <script src="js/library-api-client.js"></script>
+  <!-- Load the API Client as ES module -->
+  <script type="module" src="js/library-api-client.js"></script>
 
 </body>
 </html>
