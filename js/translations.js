@@ -11,7 +11,7 @@ const TRANSLATIONS = {
     'ageGroup': 'Age Group',
     'noResults': 'No books found',
     'newSearch': 'New Search',
-    'title': 'ARC Social',
+    'title': 'ARC Social Library',
     'browse': 'Browse our collection',
     'newBooks': 'Newly Added Books',
     'activities': 'Upcoming Activities',

@@ -98,6 +98,8 @@ export function initializeUI(apiClient, getTranslations) {
 
   function setLanguage(lang) {
     currentLanguage = lang;
+    document.documentElement.lang = lang;
+    document.title = lang === 'mr' ? 'ARC Social वाचनालय - औंध, पुणे' : 'ARC Social Library - Aundh, Pune';
     apiClient.setLanguage(currentLanguage);
     document.querySelectorAll('.lang-btn').forEach(btn => {
       btn.classList.toggle('selected', btn.id === `lang${lang.toUpperCase()}`);
@@ -301,6 +303,7 @@ export function initializeUI(apiClient, getTranslations) {
     document.getElementById('bookNumber').textContent = '';
     document.getElementById('bookSynopsis').textContent = '';
     document.getElementById('bookCover').src = '';
+    document.getElementById('bookCover').alt = '';
     document.getElementById('searchContainer').style.display = 'none';
     document.getElementById('homePage').style.display = 'none';
     document.getElementById('bookdetails').style.display = 'block';
@@ -317,10 +320,14 @@ export function initializeUI(apiClient, getTranslations) {
     if (bookInfo.success) {
       document.getElementById('bookSynopsis').textContent = bookInfo.synopsis;
       if (bookInfo.coverImage) {
-        document.getElementById('bookCover').src = bookInfo.coverImage;
-        document.getElementById('bookCover').style.display = 'block';
+        const coverEl = document.getElementById('bookCover');
+        coverEl.src = bookInfo.coverImage;
+        coverEl.alt = `Book cover for ${title} by ${author}`;
+        coverEl.style.display = 'block';
       } else {
-        document.getElementById('bookCover').style.display = 'none';
+        const coverEl = document.getElementById('bookCover');
+        coverEl.style.display = 'none';
+        coverEl.alt = '';
       }
     } else {
       document.getElementById('bookSynopsis').textContent = "No further information available";
