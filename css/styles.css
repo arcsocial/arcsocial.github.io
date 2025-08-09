@@ -71,16 +71,17 @@ label {
     gap: 20px;
 }
 
-/* Stack header items vertically so tagline appears below title */
-header .search-section {
-  flex-direction: column;
-}
+  /* Place logo and title inline; allow tagline to wrap below */
+  header .search-section {
+    flex-wrap: wrap;
+  }
 
-.tagline {
-  margin: 0;
-  text-align: center;
-  color: #555;
-}
+  .tagline {
+    width: 100%;
+    margin: 4px 0 0 0;
+    text-align: center;
+    color: #555;
+  }
 
 .lang-btn {
   flex: 1;
