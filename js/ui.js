@@ -121,6 +121,8 @@ export function initializeUI(apiClient, getTranslations) {
     document.getElementById('processingMsg').textContent = translations.processing;
     document.getElementById('bdProcessingMsg').textContent = translations.processing;
     document.getElementById('title').textContent = translations.title;
+    const taglineEl = document.getElementById('tagline');
+    if (taglineEl) taglineEl.textContent = translations.tagline;
     document.getElementById('label-genre').textContent = translations.genre;
     document.getElementById('label-author').textContent = translations.author;
     document.getElementById('label-ageGroup').textContent = translations.ageGroup;
