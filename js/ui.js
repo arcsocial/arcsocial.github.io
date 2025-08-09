@@ -134,7 +134,7 @@ export function initializeUI(apiClient, getTranslations) {
     document.getElementById('address').innerHTML = translations.address;
     document.getElementById('contact').innerHTML = translations.contact;
     document.getElementById('mail').innerHTML = translations.mail;
-    document.getElementById('instragram').innerHTML = translations.instagram;
+    document.getElementById('instagram').innerHTML = translations.instagram;
     document.getElementById('pmbooklistTitle').innerText = 'Pune Marathi Book List';
   }
 
