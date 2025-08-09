@@ -71,6 +71,17 @@ label {
     gap: 20px;
 }
 
+/* Stack header items vertically so tagline appears below title */
+header .search-section {
+  flex-direction: column;
+}
+
+.tagline {
+  margin: 0;
+  text-align: center;
+  color: #555;
+}
+
 .lang-btn {
   flex: 1;
   padding: 12px;
@@ -162,14 +173,14 @@ select:focus, input:focus {
   display: flex;
   gap: 16px;
   position: relative;
-  //height: calc(100vh - 200px);
+  /* height: calc(100vh - 200px); */
   margin-top: 20px;
 }
 
 .book-list {
   flex: 1;
   overflow-y: auto;
-  //padding-right: 40px;
+  /* padding-right: 40px; */
   scroll-behavior: smooth;
 }
 
