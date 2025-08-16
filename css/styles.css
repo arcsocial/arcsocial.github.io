@@ -433,6 +433,7 @@ footer {
 }
 
 /* Desktop/Laptop Enhancements */
+/* Commenting it out as the search container and alphabet nav does not seem to work here.
 @media (min-width: 1000px) {
   .container {
     max-width: 1200px;
@@ -494,4 +495,5 @@ footer {
   body {
     font-size: 1.1em;
   }
+  */
 }
